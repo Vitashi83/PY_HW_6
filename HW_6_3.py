@@ -74,6 +74,18 @@ class Reviewer(Mentor):
         else:
             return 'Студент не занимается на данном курсе'
 
+def compare_lect():
+    if lecturer_1.ever_rat() > lecturer_2.ever_rat():
+        print(f'У {lecturer_1.name} {lecturer_1.surname} больше всех лекторов средняя оценка за лекции: {lecturer_1.ever_rat()}')
+    else:
+        print(f'У {lecturer_2.name} {lecturer_2.surname} меньше всех лекторов средняя оценка за лекции: {lecturer_2.ever_rat()}')
+
+def compare_home():
+    if student_1.ever_rat() < student_2.ever_rat():
+        print(f'У {student_1.name} {student_1.surname} больше всех средняя оценка за домашние задания: {student_1.ever_rat()}')
+    else:
+        print(f'У {student_2.name} {student_2.surname} меньше всех средняя оценка за домашние задания: {student_2.ever_rat()}')
+
 student_1 = Student('Ruoy', 'Eman', 'man')
 student_1.finished_courses += ['Введение в программирование']
 student_1.courses_in_progress += ['Python', 'Git']
@@ -95,6 +107,35 @@ student_1.rate_st_for_lect(lecturer_1, 'Python', 10)
 student_1.rate_st_for_lect(lecturer_1, 'Git', 9)
 student_1.rate_st_for_lect(lecturer_1, 'Git', 8)
 
+student_2 = Student('Pety', 'Pupik', 'man')
+student_2.finished_courses += ['Введение в программирование']
+student_2.courses_in_progress += ['Python', 'Git']
+
+reviewer_2 = Reviewer('Ylia', 'Jva')
+reviewer_2.courses += ['Python']
+reviewer_2.courses += ['Git']
+ 
+reviewer_2.rate_rv(student_2,'Python',9)
+reviewer_2.rate_rv(student_2,'Python',10)
+reviewer_2.rate_rv(student_2,'Git',10)
+reviewer_2.rate_rv(student_2,'Git',10)
+
+lecturer_2 = Lecturer('Sony', 'Bud')
+lecturer_2.courses_in_progress += ['Python', 'Git']
+
+student_2.rate_st_for_lect(lecturer_2, 'Python', 8)
+student_2.rate_st_for_lect(lecturer_2, 'Python', 8)
+student_2.rate_st_for_lect(lecturer_2, 'Git', 9)
+student_2.rate_st_for_lect(lecturer_2, 'Git', 8)
+
 print(reviewer_1, f'\n')
 print(lecturer_1, f'\n')
-print(student_1)
+print(student_1, f'\n')
+
+print(reviewer_2, f'\n')
+print(lecturer_2, f'\n')
+print(student_2)
+
+compare_lect()
+
+compare_home()
